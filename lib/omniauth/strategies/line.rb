@@ -28,6 +28,13 @@ module OmniAuth
           description: raw_info['statusMessage']
         }
       end
+      
+      extra do
+        hash = {}
+        hash[:id_token] = access_token['id_token'] if access_token['id_token'].present?
+
+        hash
+      end
 
       # Require: Access token with PROFILE permission issued.
       def raw_info
